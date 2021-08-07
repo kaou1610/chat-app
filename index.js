@@ -12,13 +12,6 @@ const messages = [
   const text = document.querySelector("#text");
   const form = document.querySelector(".form");
   
-  function isOverflown(element) {
-    return (
-      element.scrollHeight > element.clientHeight ||
-      element.scrollWidth > element.clientWidth
-    );
-  }
-  
   function scroll() {
     chatArea.scroll(0,chatArea.scrollHeight);
   }
@@ -33,11 +26,7 @@ const messages = [
   }
   
   
-  //EVENT LISTENERS
-  text.addEventListener("focus", () => {
-    chatContainer.scrollTop = chatArea.scrollHeight + 560;
-  });
-  
+ 
   form.addEventListener("submit", e => {
     e.preventDefault();
     msg = text.value;
@@ -48,8 +37,6 @@ const messages = [
     chatArea.append(li);
     scroll();
     text.value = "";
-    // chatContainer.scrollTop =chatContainer.scrollHeight;
-    text.focus();
     setTimeout(reply, 1000, messages[counter]);
     counter++;
     if (counter == messages.length) {
@@ -62,7 +49,3 @@ const messages = [
   }
   
   
-  
-  
-  //buble body
-  const body = document.querySelector('body');
